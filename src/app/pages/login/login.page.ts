@@ -41,6 +41,7 @@ export class LoginPage implements OnInit {
       component: VerifyCodeComponent,
       componentProps: {
         correo: this.loginAuth.value.correo,
+        flagResentCode: true,
       },
     });
     modal.present();

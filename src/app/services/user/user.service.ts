@@ -48,14 +48,7 @@ export class UserService {
   
   async resentCode(correo: string = ''){
     try {
-      const resp: any = await this.apiService.post(`/auth/login`, { correo }, { headers: this.headers });
-      try {
-        const decodedToken: UserInterface | null = this.decodeJwtToken(resp?.verificado);
-        return decodedToken;
-      } catch (error) {
-        console.error('Error al decodificar el token:', error);
-        return null;
-      }
+      await this.apiService.post(`/auth/login`, { correo }, { headers: this.headers });
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(`${error.message}`);
