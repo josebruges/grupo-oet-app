@@ -1,8 +1,8 @@
 # OET-Group-App
 
-## Descargar APK
+## VIDEO EXPLICANDO COMO FUNCIONA LA APP
 
-Flujo App [aquí](https://drive.google.com/file/d/14jNBpTyhK2YX4LtBDdnU0SCvnkXibdvT/view?usp=sharing).
+Ver video [aquí](https://drive.google.com/file/d/14jNBpTyhK2YX4LtBDdnU0SCvnkXibdvT/view?usp=sharing).
 
 
 ## Requisitos para desplegar en local
