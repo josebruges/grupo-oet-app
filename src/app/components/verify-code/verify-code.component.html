@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" color="secondary">
+      <ion-icon name="arrow-back-outline" (click)="cancel()" color="secondary" size="large"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center brand-logo" color="primary">
+        <img src="../../assets/logo.jpg" alt="OET" />
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-button expand="block" shape="round" class="btn-title">
+          <strong>Código de verificación</strong>
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="12" class="ion-margin-bottom">
+        <ion-item fill="outline" mode="md">
+          <ion-label position="floating" class="ion-input-placeholder">Clave</ion-label>
+          <ion-input
+            type="text"
+            inputmode="text"
+            autocomplete="off"
+            autocorrect="off"
+            required
+            autofocus
+            maxlength="4"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-button expand="block" class="btn-acceder">
+          ACCEDER
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
