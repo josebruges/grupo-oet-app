@@ -88,7 +88,6 @@ export class AddVehicleComponent  implements OnInit {
         carroceria: resp?.carroceria,
       };
     }
-    console.debug('resp: ', resp)
   }
 
   cancel() {
@@ -125,7 +124,7 @@ export class AddVehicleComponent  implements OnInit {
       await this.vehicleService.create(data);
       this.toast.showMessage('Vehículo creado...')
       this.loading.hide(0.5);
-      this.modalCtrl.dismiss(null, 'cancel');
+      this.modalCtrl.dismiss(data, 'cancel');
     } catch (error) {
       this.loading.hide(0.5);
       await this.toast.showError('Por favor verifica la información', 'top')

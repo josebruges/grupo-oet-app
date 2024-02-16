@@ -39,16 +39,20 @@
           </ion-item>
         </ion-col>
         <ion-col size="2" class="ion-margin-bottom">
-          <ion-button (click)="gpsActive()">
+          <ion-button
+            (click)="gpsActive()"
+            [disabled]="!btnEnable"
+          >
             <ion-icon name="pin-outline"></ion-icon>
           </ion-button>
         </ion-col>
 
         <ion-col size="12">
           <ion-button
+            *ngIf="btnEnable"
             expand="block"
             class="btn-acceder"
-            [disabled]="genericForm.invalid"
+            [disabled]="genericForm.invalid || !btnEnable"
             type="submit"
           >
             GUARDAR

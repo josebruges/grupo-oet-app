@@ -4,14 +4,10 @@ import { LoaderService } from '../loader/loader.service';
 import { ToastService } from '../toast/toast.service';
 import { ApiServiceService } from '../api-service/api-service.service';
 import {
-  UserInterface,
-  VerifyCodeUserInterface,
-  UserVerifyCodeResponseInterface,
-  UserCurrentInterface,
   Listoption,
   Vehicle,
+  VehicleData,
 } from '../../interfaces/Interfaces';
-import jwt_decode from 'jwt-decode';
 import { UserService } from '../user/user.service'
 
 @Injectable({
@@ -25,9 +21,6 @@ export class VehicleService {
   };
 
   constructor(
-    private router: Router,
-    private loading: LoaderService,
-    private toast: ToastService,
     private userService: UserService,
     private apiService: ApiServiceService,
   ) {}
@@ -39,6 +32,7 @@ export class VehicleService {
       throw new Error(`No fue posible actualizar los datos de tu usuario.`);
     }
   }
+
   async create(data: Vehicle){
     const user = this.userService.getUserCurrent();
     this.headers.Authorization = `Bearer ${user?.token || ''}`
@@ -46,6 +40,14 @@ export class VehicleService {
       return await this.apiService.post('/create/vehicle', data, { headers: this.headers });
     } catch (error) {
       return error;
+    }
+  }
+
+  async getVehicles(userId:number = 0): Promise<VehicleData>{
+    try {
+      return await this.apiService.get(`/list/vehicles/${userId}`, {});
+    } catch (error) {
+      throw new Error(`No fue posible actualizar los datos de tu usuario.`);
     }
   }
 }

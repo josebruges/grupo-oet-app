@@ -17,11 +17,30 @@ export interface Listoption {
   carroceria: Carroceria[];
 }
 export interface Vehicle {
-  plate: string;
-  model: string;
-  setting_id: number;
-  bodywork_id: number;
-  user_id: number;
-  picture: string;
+  id?: number;
+  plate?: string;
+  model?: string;
+  picture?: string;
+  setting_id?: number;
+  bodywork_id?: number;
+  user_id?: number;
+  created_at?: string;
+  updated_at?: string;
+  setting?: {
+    id?: number;
+    name?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+  };
+  bodywork?: {
+    id?: number;
+    name?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+  };
 }
+export interface VehicleData {
+  data: Vehicle[]
+}
+
 

@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/user/user.service'
 import { ToastService } from '../../services/toast/toast.service'
-import { UserCurrentInterface, UserInterface, VerifyCodeUserInterface } from '../../interfaces/Interfaces';
+import { UserInterface, VerifyCodeUserInterface } from '../../interfaces/Interfaces';
 import { Router } from '@angular/router';
 
 @Component({
@@ -75,6 +75,19 @@ export class VerifyCodeComponent  implements OnInit {
     }
   }
 
-  async resentCode(){}
+  async resentCode(){
+    try {
+      const resp : UserInterface | null = await this.userService.resentCode(this.correo);
+      console.debug('>>>>> { resp }: ', resp)
+      /* if(resp !== null){
+        this.modalCtrl.dismiss(null, 'cancel');
+
+        this.userService.setUserCurrent(resp)
+        this.router.navigate(['/vehicle'], { replaceUrl: true });
+      } */
+    } catch (error) {
+      await this.toast.showError('Por favor verifica la información', 'top')
+    }
+  }
 
 }

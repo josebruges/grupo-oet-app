@@ -15,9 +15,11 @@ import { UserService } from '../../services/user/user.service'
 })
 export class AddressComponent  implements OnInit {
 
+  user: UserInterface | undefined;
   genericForm: FormGroup;
   address: string = '';
   coordenates: Position | undefined;
+  btnEnable: boolean = true;
   constructor(
     private formBuilder: FormBuilder,
     private modalCtrl: ModalController,
@@ -43,6 +45,13 @@ export class AddressComponent  implements OnInit {
 
   ngOnInit() {
     console.debug('AddressComponent');
+
+    this.user = this.userService.getUserCurrent();
+    if(this.user?.address){
+      this.address = this.user?.address;
+      this.genericForm.controls['address'].setValue(this.address);
+      this.btnEnable = false;
+    }
 
     this.toast.showMessage('Recuerda mantener activo GPS.').then(() => {})
 

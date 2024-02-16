@@ -6,7 +6,6 @@ import { ApiServiceService } from '../api-service/api-service.service';
 import {
   UserInterface,
   VerifyCodeUserInterface,
-  UserVerifyCodeResponseInterface,
   UserCurrentInterface,
 } from '../../interfaces/Interfaces';
 import jwt_decode from 'jwt-decode';
@@ -47,11 +46,22 @@ export class UserService {
     }
   }
   
-  async resentCode(email: string = ''){
+  async resentCode(correo: string = ''){
     try {
-      return await this.apiService.post('/resent-code', { email }, { headers: this.headers });
+      const resp: any = await this.apiService.post(`/auth/login`, { correo }, { headers: this.headers });
+      try {
+        const decodedToken: UserInterface | null = this.decodeJwtToken(resp?.verificado);
+        return decodedToken;
+      } catch (error) {
+        console.error('Error al decodificar el token:', error);
+        return null;
+      }
     } catch (error) {
-      return error;
+      if (error instanceof Error) {
+        throw new Error(`${error.message}`);
+      } else {
+        throw new Error("Error al verificar el código");
+      }
     }
   }
   async create(data: UserInterface){
@@ -69,6 +79,19 @@ export class UserService {
     } catch (error) {
       throw new Error(`No fue posible actualizar los datos de tu usuario.`);
     }
+  }
+
+  isLoggedIn(): boolean {
+    const user = localStorage.getItem('currentUser');
+    if (
+      user === 'undefined' ||
+      user === undefined ||
+      user === null ||
+      user === ''
+    ) {
+      return false;
+    }
+    return true;
   }
 
   setUserCurrent(data: UserInterface){
@@ -94,5 +117,9 @@ export class UserService {
   getToke() {
     const user = this.getUserCurrent();
     return user?.token || '';
+  }
+
+  logout() {
+    localStorage.clear()
   }
 }

@@ -13,4 +13,5 @@ export {
     Carroceria,
     Listoption,
     Vehicle,
+    VehicleData,
 } from './vehicle.interface';
