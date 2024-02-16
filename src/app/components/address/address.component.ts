@@ -47,8 +47,12 @@ export class AddressComponent  implements OnInit {
     console.debug('AddressComponent');
 
     this.user = this.userService.getUserCurrent();
-    if(this.user?.address){
-      this.address = this.user?.address;
+    console.debug('AddressComponent | this.user: ', this.user)
+    console.debug('AddressComponent | this.user?.address: ', this.user?.address)
+    console.debug('AddressComponent | this.user: ', this.user)
+
+    if(this.user?.address && this.user?.address !== 'N/A'){
+      this.address = this.user?.address || '';
       this.genericForm.controls['address'].setValue(this.address);
       this.btnEnable = false;
     }
