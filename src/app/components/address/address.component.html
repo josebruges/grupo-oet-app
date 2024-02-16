@@ -7,39 +7,54 @@
 </ion-header>
 <ion-content class="ion-padding">
 
+  <form
+    [formGroup]="genericForm"
+    (ngSubmit)="submit()"
+  >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" class="ion-text-center brand-logo" color="primary">
+          <img src="../../assets/logo.jpg" alt="OET" />
+        </ion-col>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" class="ion-text-center brand-logo" color="primary">
-        <img src="../../assets/logo.jpg" alt="OET" />
-      </ion-col>
+        <ion-col size="12">
+          <ion-button expand="block" shape="round" class="btn-title">
+            <strong>Registrar mi dirección</strong>
+          </ion-button>
+        </ion-col>
 
-      <ion-col size="12">
-        <ion-button expand="block" shape="round" class="btn-title">
-          <strong>Registrar mi dirección</strong>
-        </ion-button>
-      </ion-col>
+        <ion-col size="10" class="ion-margin-bottom">
+          <ion-item fill="outline" mode="md">
+            <ion-label position="floating" class="ion-input-placeholder">Dirección</ion-label>
+            <ion-input
+              formControlName="address"
+              type="text"
+              inputmode="text"
+              autocomplete="off"
+              autocorrect="off"
+              required
+              autofocus
+              maxlength="200"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="2" class="ion-margin-bottom">
+          <ion-button (click)="gpsActive()">
+            <ion-icon name="pin-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
 
-      <ion-col size="12" class="ion-margin-bottom">
-        <ion-item fill="outline" mode="md">
-          <ion-label position="floating" class="ion-input-placeholder">Dirección</ion-label>
-          <ion-input
-            type="text"
-            inputmode="text"
-            autocomplete="off"
-            autocorrect="off"
-            required
-            autofocus
-            maxlength="4"
-          ></ion-input>
-        </ion-item>
-      </ion-col>
-
-      <ion-col size="12">
-        <ion-button expand="block" class="btn-acceder">
-          GUARDAR
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        <ion-col size="12">
+          <ion-button
+            expand="block"
+            class="btn-acceder"
+            [disabled]="genericForm.invalid"
+            type="submit"
+          >
+            GUARDAR
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

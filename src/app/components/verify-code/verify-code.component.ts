@@ -3,7 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/user/user.service'
 import { ToastService } from '../../services/toast/toast.service'
-import { VerifyCodeUserInterface } from '../../interfaces/Interfaces';
+import { UserCurrentInterface, UserInterface, VerifyCodeUserInterface } from '../../interfaces/Interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verify-code',
@@ -16,6 +17,7 @@ export class VerifyCodeComponent  implements OnInit {
   verifyCodeForm: FormGroup;
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private modalCtrl: ModalController,
     private userService: UserService,
@@ -31,8 +33,8 @@ export class VerifyCodeComponent  implements OnInit {
           '',
           Validators.compose([
             Validators.required,
-            Validators.minLength(2),
-            Validators.maxLength(50),
+            Validators.minLength(5),
+            Validators.maxLength(6),
             Validators.pattern(/^[0-9]+$/),
           ]),
         ],
@@ -60,11 +62,19 @@ export class VerifyCodeComponent  implements OnInit {
         code: this.verifyCodeForm.value.code,
       }
       try {
-        await this.userService.verifyCode(data);
+        const resp : UserInterface | null = await this.userService.verifyCode(data);
+        if(resp !== null){
+          this.modalCtrl.dismiss(null, 'cancel');
+
+          this.userService.setUserCurrent(resp)
+          this.router.navigate(['/vehicle'], { replaceUrl: true });
+        }
       } catch (error) {
         await this.toast.showError('Por favor verifica la información', 'top')
       }
     }
   }
+
+  async resentCode(){}
 
 }

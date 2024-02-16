@@ -110,6 +110,7 @@
 	.btn-title {
 		font-size: 1.2em;
 		margin-bottom: 14px;
+		text-transform: capitalize;
 		--transition: 0.3s;
 	}
 	.header-brand-top {
@@ -131,30 +132,7 @@
 			--background: var(--ion-color-secondary) !important;
 		}
 	}
-
-	/* ion-loading.project-loading {
-		--spinner-color: var(--ion-color-secondary);
-		color: var(--ion-color-secondary);
+	.text-decoration {
+		text-decoration: underline;
 	}
-
-	.project-loading {
-		circle {
-			stroke: var(--ion-color-secondary) !important;
-		}
-
-		.loading-content {
-			color: #FFFFFF !important;
-		}
-
-		.loading-wrapper {
-			margin-left: -100px;
-			padding: 0 !important;
-			background-color: transparent !important;
-			box-shadow: none;
-		}
-
-		ion-backdrop {
-			--backdrop-opacity: 0.7 !important;
-		}
-	} */
 }

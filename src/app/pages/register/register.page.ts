@@ -33,7 +33,7 @@ export class RegisterPage implements OnInit {
     this.registerForm = this.formBuilder.group(
       {
         nombres: [
-          'jose',
+          '',
           Validators.compose([
             Validators.required,
             Validators.minLength(2),
@@ -42,7 +42,7 @@ export class RegisterPage implements OnInit {
           ]),
         ],
         apellidos: [
-          'bruges',
+          '',
           Validators.compose([
             Validators.required,
             Validators.minLength(2),
@@ -51,7 +51,7 @@ export class RegisterPage implements OnInit {
           ]),
         ],
         cedula: [
-          '1082958805',
+          '',
           Validators.compose([
             Validators.required,
             Validators.minLength(2),
@@ -60,7 +60,7 @@ export class RegisterPage implements OnInit {
           ]),
         ],
         telefono: [
-          '3143080807',
+          '',
           Validators.compose([
             Validators.required,
             Validators.minLength(2),
@@ -69,7 +69,7 @@ export class RegisterPage implements OnInit {
           ]),
         ],
         correo: [
-          'josedavid.bruges@gmail.com',
+          '',
           Validators.compose([
             Validators.required,
             Validators.minLength(2),
@@ -92,12 +92,12 @@ export class RegisterPage implements OnInit {
       ...this.registerForm.value,
       password: 'secret'
     }
-    await this.openModal()
     try {
       const resp = await this.userService.create(data);
-      await this.openModal()
+      await this.openModal();
     } catch (error) {
-      await this.toast.showError('Por favor verifica la información', 'top')
+      const message = error + '' || 'Por favor, verifique la información ingresada.';
+      await this.toast.showError(message, 'top');
     }
     this.loading.hide();
   }
