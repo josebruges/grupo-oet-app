@@ -39,16 +39,6 @@
 			url("../assets/fonts/Gotham/gotham-black.otf") format("opentype");
 	}
 
-	body {
-		background-color: #f5f6f9;
-	}
-	ion-app {
-		width: 550px;
-		margin: auto;
-		box-shadow: 0 2px 4px rgba(245, 246, 249, 0.5);
-
-	}
-
 	ion-content {
 		--keyboard-offset: 0 !important;
 		--transition: 0.3s;
@@ -126,4 +116,40 @@
 		height: 40px;
 		margin-left: 140px;
 	}
+
+	body {
+		background-color: #f5f6f9;
+	}
+	ion-app {
+		/* width: 550px;
+		margin: auto; */
+		/* box-shadow: 0 2px 4px rgba(245, 246, 249, 0.5); */
+
+	}
+
+	/* ion-loading.project-loading {
+		--spinner-color: var(--ion-color-secondary);
+		color: var(--ion-color-secondary);
+	}
+
+	.project-loading {
+		circle {
+			stroke: var(--ion-color-secondary) !important;
+		}
+
+		.loading-content {
+			color: #FFFFFF !important;
+		}
+
+		.loading-wrapper {
+			margin-left: -100px;
+			padding: 0 !important;
+			background-color: transparent !important;
+			box-shadow: none;
+		}
+
+		ion-backdrop {
+			--backdrop-opacity: 0.7 !important;
+		}
+	} */
 }

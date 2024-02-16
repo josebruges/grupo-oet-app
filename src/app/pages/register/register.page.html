@@ -6,7 +6,10 @@
 
 <ion-content [fullscreen]="true">
   
-  <form>
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="register()"
+  >
     <ion-grid>
       <ion-row>
         <ion-col size="12" class="ion-text-center brand-logo" color="primary">
@@ -23,6 +26,7 @@
           <ion-item fill="outline" mode="md">
             <ion-label position="floating" class="ion-input-placeholder">Nombres</ion-label>
             <ion-input
+              formControlName="nombres"
               type="text"
               inputmode="text"
               autocomplete="off"
@@ -36,6 +40,7 @@
           <ion-item fill="outline" mode="md">
             <ion-label position="floating" class="ion-input-placeholder">Apellidos</ion-label>
             <ion-input
+              formControlName="apellidos"
               type="text"
               inputmode="text"
               autocomplete="off"
@@ -48,6 +53,7 @@
           <ion-item fill="outline" mode="md">
             <ion-label position="floating" class="ion-input-placeholder">Identificación</ion-label>
             <ion-input
+              formControlName="identificacion"
               type="text"
               inputmode="text"
               autocomplete="off"
@@ -60,6 +66,7 @@
           <ion-item fill="outline" mode="md">
             <ion-label position="floating" class="ion-input-placeholder">Teléfono</ion-label>
             <ion-input
+              formControlName="telefono"
               type="tel"
               inputmode="tel"
               autocomplete="off"
@@ -72,6 +79,7 @@
           <ion-item fill="outline" mode="md">
             <ion-label position="floating" class="ion-input-placeholder">Correo electrónico</ion-label>
             <ion-input
+              formControlName="correo"
               type="email"
               inputmode="email"
               autocomplete="off"
@@ -88,7 +96,12 @@
         </ion-col>
 
         <ion-col size="12">
-          <ion-button expand="block" class="btn-acceder">
+          <ion-button
+            expand="block"
+            class="btn-acceder"
+            [disabled]="registerForm.invalid"
+            type="submit"
+          >
             REGISTRARME
           </ion-button>
         </ion-col>
