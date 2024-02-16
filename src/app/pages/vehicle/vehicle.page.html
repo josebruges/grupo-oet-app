@@ -35,7 +35,7 @@
 <div class="ion-page" id="main-content">
   <ion-header color="primary">
     <ion-toolbar color="primary">
-      <ion-title>Vehiculos</ion-title>
+      <ion-title color="secondary">Vehiculos</ion-title>
       <ion-buttons slot="end" color="secondary">
         <ion-icon
           name="menu-outline"
@@ -48,6 +48,29 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
+    <ion-list [inset]="true">
+
+      <ion-item [button]="true" *ngFor="let vehicle of vehicles">
+        <ion-thumbnail slot="start">
+          <ion-img
+            class="thumbnail-img"
+            [src]="vehicle?.picture"
+            alt="OET - App"
+          ></ion-img>
+        </ion-thumbnail>
+
+        <ion-label>
+          <strong>Placa: </strong> {{ vehicle?.plate }} <br />
+          <!-- <ion-text><strong>Modelo (año): </strong> {{ vehicle?.model }}</ion-text><br /> -->
+          <ion-note color="medium" class="ion-text-wrap">
+            <strong>Modelo (año): </strong> {{ vehicle?.model }} <br />
+            <strong>Configuración: </strong> {{ vehicle?.setting?.name }} <br />
+            <strong>Carrocería: </strong> {{ vehicle?.bodywork?.name }} <br />
+          </ion-note>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
   </ion-content>
 </div>
 

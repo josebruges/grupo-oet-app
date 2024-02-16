@@ -5,8 +5,12 @@ import { MenuController } from '@ionic/angular';
 import { ProfileComponent } from '../../components/profile/profile.component';
 import { AddVehicleComponent } from '../../components/add-vehicle/add-vehicle.component';
 
-import { LoaderService } from '../../services/loader/loader.service';
-
+import { ToastService } from '../../services/toast/toast.service'
+import { LoaderService } from '../../services/loader/loader.service'
+import { UserService } from '../../services/user/user.service'
+import { VehicleService } from '../../services/vehicle/vehicle.service'
+import { UserInterface, Vehicle } from '../../interfaces/Interfaces';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-vehicle',
   templateUrl: './vehicle.page.html',
@@ -14,14 +18,23 @@ import { LoaderService } from '../../services/loader/loader.service';
 })
 export class VehiclePage implements OnInit {
 
+  user: UserInterface | undefined;
+  vehicles: Vehicle[] = []
+
   constructor(
-    private loading: LoaderService,
+    private router: Router,
     private menuCtrl: MenuController,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private loading: LoaderService,
+    private toast: ToastService,
+    private userService: UserService,
+    private vehicleService: VehicleService,
   ) { }
 
   ngOnInit() {
     console.debug('VehiclePage')
+    this.user = this.userService.getUserCurrent();
+    this.init();
   }
 
   openMenu(){
@@ -30,7 +43,8 @@ export class VehiclePage implements OnInit {
 
   openModal(option: string = '') {
     if(option === 'exit'){
-
+      this.userService.logout();
+      this.router.navigate(['/']);
     }else{
       this.openModalAction(option);
     }
@@ -38,7 +52,6 @@ export class VehiclePage implements OnInit {
   }
 
   async openModalAction(option: string = ''){
-    let componentRedirect = ProfileComponent;
     switch(option){
       case 'profile':
         this.modalCtrl.create({
@@ -53,6 +66,9 @@ export class VehiclePage implements OnInit {
           component: AddVehicleComponent,
         }).then(modal => {
           modal.present();
+          modal.onWillDismiss().then(data => {
+            this.init();
+          })
         });
         break
 
@@ -61,9 +77,25 @@ export class VehiclePage implements OnInit {
           component: AddVehicleComponent,
         }).then(modal => {
           modal.present();
+          modal.onWillDismiss().then(data => {
+            this.init();
+          })
         });
         break
     }
   }
 
+  async init(){
+    this.loading.show('Cargando información...');
+    try {
+      const resp = await this.vehicleService.getVehicles(this.user?.id);
+      if(resp?.data){
+        this.vehicles = resp?.data;
+      }
+      this.loading.hide(0.5).then(() => {});
+    } catch (error) {
+      this.loading.hide(0.5).then(() => {});
+      await this.toast.showError('No fue posible cargar el listado de vehículos', 'top')
+    }
+  }
 }
