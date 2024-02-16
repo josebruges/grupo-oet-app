@@ -2,7 +2,12 @@ export interface UserInterface {
     token?: string;
     nombres: string;
     apellidos: string;
-    identificacion: string;
-    telefono: string;
+    cedula: string;
     correo: string;
+    telefono: string;
+    password?: string;
+}
+export interface VerifyCodeUserInterface {
+    correo: string;
+    code: string;
 }

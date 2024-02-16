@@ -13,6 +13,8 @@ import { IdAuthenticatorComponent } from '../app/components/id-authenticator/id-
 import { AddressComponent } from '../app/components/address/address.component';
 import { AddVehicleComponent } from '../app/components/add-vehicle/add-vehicle.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,12 @@ import { AddVehicleComponent } from '../app/components/add-vehicle/add-vehicle.c
     AddressComponent,
     AddVehicleComponent,
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    ReactiveFormsModule
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

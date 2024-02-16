@@ -1,2 +1,5 @@
 export { RespuestaHttpInterface } from './respuesta-http.interface';
-export { UserInterface } from './user.interface';
+export {
+    UserInterface,
+    VerifyCodeUserInterface,
+} from './user.interface';

@@ -5,6 +5,7 @@ import { ToastService } from '../toast/toast.service';
 import { ApiServiceService } from '../api-service/api-service.service';
 import {
   UserInterface,
+  VerifyCodeUserInterface
 } from '../../interfaces/Interfaces';
 
 @Injectable({
@@ -13,8 +14,7 @@ import {
 export class UserService {
 
   headers = {
-    'Access-Source': 'APP_MOVIL',
-    autorization: '',
+    'Content-Type': 'application/json',
   };
 
   constructor(
@@ -24,8 +24,25 @@ export class UserService {
     private apiService: ApiServiceService,
   ) {}
 
+  async verifyCode(data: VerifyCodeUserInterface){
+    try {
+      return this.apiService.post('/verify-code', { data }, { headers: this.headers });
+    } catch (error) {
+      return error;
+    }
+  }
+  async resentCode(email: string = ''){
+    try {
+      return this.apiService.post('/resent-code', { email }, { headers: this.headers });
+    } catch (error) {
+      return error;
+    }
+  }
   async create(data: UserInterface){
-    return this.apiService.post('/usuarios/logout', {}, { headers: this.headers });
-
+    try {
+      return this.apiService.post('/users', data, { headers: this.headers });
+    } catch (error) {
+      return error;
+    }
   }
 }
