@@ -5,6 +5,8 @@ import { MenuController } from '@ionic/angular';
 import { ProfileComponent } from '../../components/profile/profile.component';
 import { AddVehicleComponent } from '../../components/add-vehicle/add-vehicle.component';
 
+import { LoaderService } from '../../services/loader/loader.service';
+
 @Component({
   selector: 'app-vehicle',
   templateUrl: './vehicle.page.html',
@@ -13,6 +15,7 @@ import { AddVehicleComponent } from '../../components/add-vehicle/add-vehicle.co
 export class VehiclePage implements OnInit {
 
   constructor(
+    private loading: LoaderService,
     private menuCtrl: MenuController,
     private modalCtrl: ModalController
   ) { }
