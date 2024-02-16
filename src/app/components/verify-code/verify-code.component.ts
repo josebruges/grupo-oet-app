@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class VerifyCodeComponent  implements OnInit {
   @Input()
   correo: string | undefined;
+  @Input() flagResentCode: boolean = false;
   verifyCodeForm: FormGroup;
 
   constructor(
@@ -45,6 +46,9 @@ export class VerifyCodeComponent  implements OnInit {
 
   ngOnInit() {
     console.debug('VerifyCodeComponent');
+    if(this.flagResentCode){
+      this.resentCode().then(() => {});
+    }
   }
 
   cancel() {
@@ -77,14 +81,7 @@ export class VerifyCodeComponent  implements OnInit {
 
   async resentCode(){
     try {
-      const resp : UserInterface | null = await this.userService.resentCode(this.correo);
-      console.debug('>>>>> { resp }: ', resp)
-      /* if(resp !== null){
-        this.modalCtrl.dismiss(null, 'cancel');
-
-        this.userService.setUserCurrent(resp)
-        this.router.navigate(['/vehicle'], { replaceUrl: true });
-      } */
+      await this.userService.resentCode(this.correo);
     } catch (error) {
       await this.toast.showError('Por favor verifica la información', 'top')
     }

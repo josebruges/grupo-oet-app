@@ -107,6 +107,7 @@ export class RegisterPage implements OnInit {
       component: VerifyCodeComponent,
       componentProps: {
         correo: this.registerForm.value.correo,
+        flagResentCode: false,
       },
     });
     modal.present();
