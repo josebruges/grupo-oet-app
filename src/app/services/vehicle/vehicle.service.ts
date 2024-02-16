@@ -42,8 +42,10 @@ export class VehicleService {
   }
 
   async getVehicles(userId:number = 0): Promise<VehicleData>{
+    const user = this.userService.getUserCurrent();
+    this.headers.Authorization = `Bearer ${user?.token || ''}`
     try {
-      return await this.apiService.get(`/list/vehicles/${userId}`, {});
+      return await this.apiService.get(`/list/vehicles/${userId}`, { headers: this.headers });
     } catch (error) {
       throw new Error(`No fue posible actualizar los datos de tu usuario.`);
     }

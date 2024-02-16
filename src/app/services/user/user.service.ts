@@ -61,7 +61,7 @@ export class UserService {
     try {
       return await this.apiService.post('/users', data, { headers: this.headers });
     } catch (error) {
-      return error;
+      throw new Error(`${error}`);
     }
   }
   async update(data: UserInterface){
