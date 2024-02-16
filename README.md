@@ -3,6 +3,7 @@
 ## VIDEO EXPLICANDO COMO FUNCIONA LA APP
 
 Ver video [aquí](https://drive.google.com/file/d/14jNBpTyhK2YX4LtBDdnU0SCvnkXibdvT/view?usp=sharing).
+<img width="1512" alt="image" src="https://github.com/josebruges/grupo-oet-app/assets/12555140/0d9e6610-3dc2-4ba1-9f37-417971c90e98">
 
 
 ## Requisitos para desplegar en local
