@@ -1,12 +1,19 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'grupo-oet-app',
+  appId: 'co.groupd.oet',
+  appName: 'OET App',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
-  }
+    androidScheme: 'https',
+    iosScheme: 'https'
+  },
+  plugins: {
+    Geolocation: {
+      alwaysPermission: true
+    },
+  },
 };
 
 export default config;
+

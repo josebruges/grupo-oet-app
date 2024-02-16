@@ -1,15 +1,18 @@
 {
-  "name": "grupo-oet-app",
+  "name": "OET App",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Jose Bruges",
   "homepage": "https://ionicframework.com/",
+  "description": "Test OET App",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "create-platform:release": "rmdir /s /q android || rm -rf android && ionic capacitor add android && npm install @capacitor/assets --save-dev && npx capacitor-assets generate && ionic cap build android",
+    "android:release": "ionic build && npx cap sync && npx cap copy android && npx cap open android"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +24,7 @@
     "@angular/platform-browser": "^17.0.2",
     "@angular/platform-browser-dynamic": "^17.0.2",
     "@angular/router": "^17.0.2",
+    "@capacitor/android": "5.7.0",
     "@capacitor/app": "5.0.7",
     "@capacitor/camera": "^5.0.9",
     "@capacitor/core": "5.7.0",
@@ -46,6 +50,7 @@
     "@angular/cli": "^17.0.0",
     "@angular/compiler-cli": "^17.0.2",
     "@angular/language-service": "^17.0.2",
+    "@capacitor/assets": "^3.0.4",
     "@capacitor/cli": "5.7.0",
     "@ionic/angular-toolkit": "^9.0.0",
     "@types/jasmine": "~5.1.0",
@@ -63,6 +68,5 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.2.2"
-  },
-  "description": "An Ionic project"
+  }
 }

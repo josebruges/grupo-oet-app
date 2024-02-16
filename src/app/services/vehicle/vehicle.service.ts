@@ -34,12 +34,10 @@ export class VehicleService {
   }
 
   async create(data: Vehicle){
-    const user = this.userService.getUserCurrent();
-    this.headers.Authorization = `Bearer ${user?.token || ''}`
     try {
       return await this.apiService.post('/create/vehicle', data, { headers: this.headers });
     } catch (error) {
-      return error;
+      throw new Error(`${error}`);
     }
   }
 
