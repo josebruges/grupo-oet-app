@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-verify-code',
@@ -7,8 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifyCodeComponent  implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalCtrl: ModalController
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.debug('VerifyCodeComponent');
+  }
+
+  cancel() {
+    return this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    return this.modalCtrl.dismiss('', 'confirm');
+  }
 
 }
