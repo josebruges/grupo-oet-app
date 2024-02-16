@@ -1,0 +1,7 @@
+{
+  "name": "grupo-oet-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
