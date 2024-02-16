@@ -1,3 +1,77 @@
-<p>
-  add-vehicle works!
-</p>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" color="secondary">
+      <ion-icon class="header-btn-back-top" name="arrow-back-outline" color="secondary" size="large" (click)="cancel()"></ion-icon>
+    </ion-buttons>
+    <img class="header-brand-top" src="../../assets/logo.jpg" alt="OET" />
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" class="ion-text-center brand-logo" color="primary">
+          <img src="../../assets/logo.jpg" alt="OET" />
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-button expand="block" shape="round" class="btn-title">
+            <strong>Nuevo vehículo</strong>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="12" class="ion-margin-bottom">
+          <ion-item fill="outline" mode="md">
+            <ion-label position="floating" class="ion-input-placeholder">Placa</ion-label>
+            <ion-input
+              type="text"
+              inputmode="text"
+              autocomplete="off"
+              autocorrect="off"
+              required
+              autofocus
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" class="ion-margin-bottom">
+          <ion-item fill="outline" mode="md">
+            <ion-label position="floating" class="ion-input-placeholder">Modelo (año)</ion-label>
+            <ion-input
+              type="tel"
+              inputmode="tel"
+              autocomplete="off"
+              autocorrect="off"
+              required
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" class="ion-margin-bottom">
+          <ion-item fill="outline" mode="md">
+            <ion-select aria-label="Configuración" value="apple">
+              <ion-select-option value="apple">Apple</ion-select-option>
+              <ion-select-option value="banana">Banana</ion-select-option>
+              <ion-select-option value="orange">Orange</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" class="ion-margin-bottom">
+          <ion-item fill="outline" mode="md">
+            <ion-select aria-label="Carrocería" value="apple">
+              <ion-select-option value="apple">Apple</ion-select-option>
+              <ion-select-option value="banana">Banana</ion-select-option>
+              <ion-select-option value="orange">Orange</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-button expand="block" class="btn-acceder">
+            GUARDAR
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -10,6 +10,7 @@ export class RegisterPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.debug('RegisterPage')
   }
 
 }

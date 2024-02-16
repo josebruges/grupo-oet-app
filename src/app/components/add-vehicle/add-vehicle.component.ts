@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-vehicle',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddVehicleComponent  implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalCtrl: ModalController
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.debug('AddVehicleComponent')
+  }
+
+  cancel() {
+    this.modalCtrl.dismiss()
+  }
 
 }

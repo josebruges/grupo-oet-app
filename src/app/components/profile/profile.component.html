@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" color="secondary">
+      <ion-icon class="header-btn-back-top" name="arrow-back-outline" color="secondary" size="large" (click)="cancel()"></ion-icon>
+    </ion-buttons>
+    <img class="header-brand-top" src="../../assets/logo.jpg" alt="OET" />
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-text color="primary" class="ion-text-center title-page">
+    <h1 class="ion-text-center">
+      <strong>Mi Perfil</strong>
+    </h1>
+  </ion-text>
+
+  <ion-list>
+
+    <ion-item (click)="toId()">
+      <!-- <ion-spinner></ion-spinner> -->
+      <ion-icon name="warning-outline" color="warning"></ion-icon>
+      <!-- <ion-icon name="checkmark-circle-outline"></ion-icon> -->
+      <ion-label color="primary">
+        &nbsp; <strong>Identificación</strong>
+      </ion-label>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="toAddress()">
+      <!-- <ion-spinner></ion-spinner> -->
+      <!-- <ion-icon name="warning-outline" color="warning"></ion-icon> -->
+      <ion-icon name="checkmark-circle-outline" color="secondary"></ion-icon>
+      <ion-label color="primary">
+        &nbsp; <strong>Dirección</strong>
+      </ion-label>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

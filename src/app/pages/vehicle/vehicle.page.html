@@ -1,13 +1,53 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>vehicle</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">vehicle</ion-title>
+<ion-menu menuId="first-menu" contentId="main-content">
+  <ion-header color="primary">
+    <ion-toolbar color="primary">
+      <ion-title color="secondary">Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+  <ion-content>
+    <ion-list>
+
+      <ion-item (click)="openModal('profile')">
+        <ion-label color="primary">
+          Mi perfil
+        </ion-label>
+        <ion-icon name="chevron-forward-outline" color="primary"></ion-icon>
+      </ion-item>
+
+      <ion-item (click)="openModal('add-vehicle')">
+        <ion-label color="primary">
+          Nuevo vehículo
+        </ion-label>
+        <ion-icon name="chevron-forward-outline" color="primary"></ion-icon>
+      </ion-item>
+
+      <ion-item (click)="openModal('exit')">
+        <ion-label color="primary">
+          Salir
+        </ion-label>
+        <ion-icon name="chevron-forward-outline" color="primary"></ion-icon>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header color="primary">
+    <ion-toolbar color="primary">
+      <ion-title>Vehiculos</ion-title>
+      <ion-buttons slot="end" color="secondary">
+        <ion-icon
+          name="menu-outline"
+          color="secondary"
+          size="large"
+          (click)="openMenu()"
+        ></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+  </ion-content>
+</div>
+
